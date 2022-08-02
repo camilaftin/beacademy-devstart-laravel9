@@ -4,7 +4,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
   UserController,
   ViaCepController
-};  
+};
+
+Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update');
+Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
+
 
 Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
 Route::post('/user', [UserController::class, 'store'])->name('users.store');
@@ -16,4 +20,4 @@ Route::get('/users/{id}', [UserController::class, 'show'])->name('users.show');
 //VIA CEP WEB SERVICE
 Route::get('/viacep', [ViaCepController::class, 'index'])->name('viacep.index');
 Route::post('/viacep', [ViaCepController::class, 'index'])->name('viacep.index.post');
-Route::get('/viacep/{cep}',[ViaCepController::class, 'show'])->name('viacep.show');
+Route::get('/viacep/{cep}', [ViaCepController::class, 'show'])->name('viacep.show');
